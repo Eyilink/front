@@ -16,19 +16,19 @@ return (
 		<Bars />
 
 		<NavMenu>
-		<NavLink to='/' activeStyle>
+		<NavLink to='/' >
 			About
 		</NavLink>
-		<NavLink to='/events' activeStyle>
+		<NavLink to='/events' >
 			Events
 		</NavLink>
-		<NavLink to='/annual' activeStyle>
+		<NavLink to='/annual' >
 			Annual Report
 		</NavLink>
-		<NavLink to='/team' activeStyle>
+		<NavLink to='/team' >
 			Teams
 		</NavLink>
-		<NavLink to='/blogs' activeStyle>
+		<NavLink to='/blogs' >
 			Blogs
 		</NavLink>
 		</NavMenu>

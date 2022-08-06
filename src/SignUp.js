@@ -56,7 +56,7 @@ export const SignUp = () => {
        
         <div className="p1">
             <div className="log">
-                <form className="formFields" >
+                <div className="formFields" >
                     <div className="lfa">
                         <FaMountain />
                     </div>
@@ -115,7 +115,7 @@ export const SignUp = () => {
                         Register
                         </Button>
                     </Form>
-                </form>
+                </div>
             </div>
             {/* {register ? (
           <p className="text-success">You Registered Successfully</p>

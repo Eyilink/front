@@ -1,34 +1,56 @@
 import React, { useState } from "react";
 import './Login.css' ;
 import {FaMountain} from 'react-icons/fa';
-import Cookies from 'js-cookie';
 import { Form, Button } from "react-bootstrap";
-import axios from "axios";
+
+
+import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
+
+
+
+const cookies = new Cookies();
 export const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [login, setLogin] = useState(false);
    const [state , setState] = useState(false);
+   const axios = require("axios");
+   
    const handleSubmit = (event) =>{
-    
-    const configuration = {
+    //window.location.href = '/auth';
+    const data = JSON.stringify({
+        email: email,
+        password: password,
+      });
+      const config = {
         method: "post",
         url: "https://nodejs-mongodb-authapp.herokuapp.com/login",
-        data: {
-          email,
-          password,
+        headers: {
+          "Content-Type": "application/json",
         },
+        data: data,
       };
-      axios(configuration)
+      
+      axios(config)
       .then((result) => {
-        setLogin(true);
-       
+        alert(JSON.stringify(result.data));
+         //setLogin(true);
+        
+        cookies.set("TOKEN", result.data.token, {
+            path: "/",
+          });
+    
+       window.location.href = '/auth';
+        
+        
       })
       .catch((error) => {
-        error = new Error();
+        alert("failed");
+        //error = new Error();
        
-      });
+      }); 
 
 
    }
@@ -63,7 +85,7 @@ export const Login = () => {
        
         <div className="p1">
             <div className="log">
-                <form className="formFields" onSubmit={handleSubmit}>
+                <div className="formFields" >
                     <div className="lfa">
                         <FaMountain />
                     </div>
@@ -112,7 +134,7 @@ export const Login = () => {
                         Login
                         </Button>
                     </Form>
-                </form>
+                </div>
             </div>
             {/* {login ? (
           <p className="text-success">You Are Logged in Successfully</p>
