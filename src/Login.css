@@ -1,0 +1,106 @@
+.p1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top:50px;
+}
+.formField div {
+    display: flex;
+    flex-direction: row;
+}
+.formField p {
+    color: white;
+    font-size: 12px;
+    position: relative;
+    top:15px;
+    right: 25px;
+}
+.formFields > p {
+    color: white;
+    font-size: 24;
+    font-weight: bold;
+}
+.chk{
+    position: absolute;
+    left: 0;
+    margin-top: 30px;
+   
+
+}
+.chk:hover{
+    cursor: pointer;
+}
+.log{
+    
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(120,15,134,0.7402311266303396) 100%, rgba(0,212,255,1) 100%);
+    width: 300px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+   
+}
+.formFields{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.formField{
+    background: transparent;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.in{
+    background-color: transparent;
+    max-width: 200px;
+    color: white;
+     border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    border-bottom-color: white;
+   outline: none;
+    margin-top: 10px;
+}
+
+
+.butt {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: rgba(120,15,134,0.7402311266303396);
+    border: solid 2px rgba(120,15,134,0.7402311266303396);
+    border-radius: 3px;
+    transition: .4s;
+    background-color: white;
+    margin: 30px;
+    max-width: max-content;
+    position: relative;
+   top: 20px;
+}
+.butt:hover{
+    cursor: pointer;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(120,15,134,0.7402311266303396) 100%, rgba(0,212,255,1) 100%);
+    color: white;
+}
+.lfa {
+    background-color: white;
+    border: none;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
