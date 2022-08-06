@@ -1,45 +1,67 @@
 import React, { useState } from "react";
 import './Login.css' ;
-import {FaMountain} from 'react-icons/fa'
-import Cookies from 'js-cookie'
+import {FaMountain} from 'react-icons/fa';
+import Cookies from 'js-cookie';
+import { Form, Button } from "react-bootstrap";
+import axios from "axios";
 export const SignUp = () => {
 
-   
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [register, setRegister] = useState(false);
    const handleSubmit = (event) =>{
-        event.preventDefault();
-       
-        fetch(process.env.REACT_APP_API+'signup/',{
-            method:'POST',
-            headers:{
-                'Accept':'application/json',
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify({
-                username:event.target.username.value,
-                email:event.target.email.value,
-                password:event.target.username.value
-                
-            })
-        })
-        .then(res=>res.json())
-        .then((result)=>{
-            alert(result);
+
+    const configuration = {
+        method: "post",
+        url: "https://nodejs-mongodb-authapp.herokuapp.com/register",
+        data: {
+          email,
+          password,
         },
-        (error)=>{
-            alert('Failed');
-        })
+      };
+      axios(configuration)
+      .then((result) => {
+        setRegister(true);
+        
+      })
+      .catch((error) => {
+        error = new Error();
+      });
+
+        // event.preventDefault();
+       
+        // fetch(process.env.REACT_APP_API+'signup/',{
+        //     method:'POST',
+        //     headers:{
+        //         'Accept':'application/json',
+        //         'Content-Type':'application/json'
+        //     },
+        //     body:JSON.stringify({
+        //         username:event.target.username.value,
+        //         email:event.target.email.value,
+        //         password:event.target.username.value
+                
+        //     })
+        // })
+        // .then(res=>res.json())
+        // .then((result)=>{
+        //     alert(result);
+        // },
+        // (error)=>{
+        //     alert('Failed');
+        // })
     
     }
     return(
        
         <div className="p1">
             <div className="log">
-                <form className="formFields" onSubmit={handleSubmit}>
+                <form className="formFields" >
                     <div className="lfa">
                         <FaMountain />
                     </div>
                     <p>REGISTER</p>
-                    <div className="formField">
+                    {/* <div className="formField">
                         
                         <input id="username" className="in" type="text" placeholder="Enter username" name="username"  required/>
                         <input id="email"  className="in" type="text" placeholder="Enter email" name="email"  required/>
@@ -49,10 +71,57 @@ export const SignUp = () => {
                         
                         </div>
                         <button className="butt" type="submit">REGISTER</button>
-                    </div>
+                    </div> */}
+                     <Form onSubmit={(e)=>handleSubmit(e)} className="form2_">
+                        {/* email */}
+                        <Form.Group controlId="formBasicEmail">
+                        
+                        <Form.Control
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Enter email"
+                        />
+                        </Form.Group>
+
+                        {/* password */}
+                        <Form.Group controlId="formBasicPassword">
+                        
+                        <Form.Control
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Password"
+                        />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicPasswordChk">
+                        
+                        <Form.Control
+                            type="password"
+                            name="passwordchk"
+                            
+                            onChange={(e) => {if(password == e.target.value)setPassword(e.target.value);}}
+                            placeholder="Confirm Password"
+                        />
+                        </Form.Group>
+                        {/* submit button */}
+                        <Button
+                        variant="primary"
+                        type="submit"
+                        onClick={(e) => handleSubmit(e)}
+                        >
+                        Register
+                        </Button>
+                    </Form>
                 </form>
             </div>
-            
+            {/* {register ? (
+          <p className="text-success">You Registered Successfully</p>
+        ) : (
+          <p className="text-danger">Registration Failed</p>
+        )} */}
         </div>
     )
 }
