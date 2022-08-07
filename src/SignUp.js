@@ -10,7 +10,7 @@ export const SignUp = () => {
     const [password, setPassword] = useState("");
     const [register, setRegister] = useState(false);
    const handleSubmit = (event) =>{
-
+    event.preventDefault();
     const configuration = {
         method: "post",
         url: "https://nodejs-mongodb-authapp.herokuapp.com/register",

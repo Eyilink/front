@@ -1,13 +1,14 @@
 import React from 'react';
 import Navbar from './Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route ,Navigate} from 'react-router-dom';
 import {Login} from './Login';
 import {SignUp} from './SignUp'
 import { Home } from './Home';
 import Freecomponent from './Freecomponent';
 import AuthComponent from './AuthComponent';
-import ProtectedRoutes from './ProtectedRoutes';
+import Cookies from 'universal-cookie';
 function App() {
+	const cookies = new Cookies();
 return (
 	<Router>
 	<Navbar />
@@ -16,7 +17,8 @@ return (
 		<Route path='/signup' element={<SignUp />} />
 		<Route path='/signin' element={<Login />} />
 		<Route path='/free' element={<Freecomponent />} />
-		<Route path='/auth' element={<AuthComponent/>} />
+		<Route path='/auth' element={cookies.get("TOKEN") ? <AuthComponent /> : <Navigate to='/' />} />
+		
 	</Routes>
 	</Router>
 );

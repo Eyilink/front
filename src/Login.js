@@ -3,7 +3,7 @@ import './Login.css' ;
 import {FaMountain} from 'react-icons/fa';
 import { Form, Button } from "react-bootstrap";
 
-
+import axios from "axios";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -14,44 +14,30 @@ export const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [login, setLogin] = useState(false);
+    const [login, setLogin] = useState("");
    const [state , setState] = useState(false);
-   const axios = require("axios");
+  
    
-   const handleSubmit = (event) =>{
-    //window.location.href = '/auth';
-    const data = JSON.stringify({
-        email: email,
-        password: password,
-      });
-      const config = {
+    const handleSubmit = (event) =>{
+    event.preventDefault();
+    const configuration = {
         method: "post",
         url: "https://nodejs-mongodb-authapp.herokuapp.com/login",
-        headers: {
-          "Content-Type": "application/json",
+        data: {
+          email,
+          password,
         },
-        data: data,
       };
-      
-      axios(config)
+     
+      axios(configuration)
       .then((result) => {
-        alert(JSON.stringify(result.data));
-         //setLogin(true);
-        
+        setLogin(true);
         cookies.set("TOKEN", result.data.token, {
             path: "/",
           });
-    
-       window.location.href = '/auth';
-        
-        
+          window.location.href = "/auth";
       })
-      .catch((error) => {
-        alert("failed");
-        //error = new Error();
-       
-      }); 
-
+      .catch((error) => {console.log(error);})
 
    }
 //    const handleSubmit = (event) =>{
@@ -100,7 +86,7 @@ export const Login = () => {
                         </div>
                         <button className="butt" type="submit"> LOG IN</button>
                     </div> */}
-                     <Form onSubmit={(e)=>handleSubmit(e)} className="form_">
+                     <Form  className="form_">
                         {/* email */}
                         <Form.Group controlId="formBasicEmail">
                         
@@ -136,11 +122,7 @@ export const Login = () => {
                     </Form>
                 </div>
             </div>
-            {/* {login ? (
-          <p className="text-success">You Are Logged in Successfully</p>
-        ) : (
-          <p className="text-danger">You Are Not Logged in</p>
-        )} */}
+           
         </div>
         
     )
