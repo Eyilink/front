@@ -27,7 +27,12 @@
     font-size: 30px;
     font-weight:bold;
     text-align: center;
+    text-decoration: none;
+    color: black;
     
+}
+.maincore a:hover {
+    color : black;
 }
 .maincore a::before{
     content: "";
