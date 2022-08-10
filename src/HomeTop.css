@@ -22,7 +22,7 @@ img {
   background-size: 0% 4px;
   transition: background-size 1s ease;
 }
-.text p{
+#para{
     text-align: center;
     text-decoration: none;
   background:  no-repeat 0 100%;
@@ -30,7 +30,7 @@ img {
   background-size: 0% 10px;
   transition: background-size 1s ease;
 }
-.text p:hover{
+#para:hover{
     background-size: 100% 10px;
     /* transform: skew(-12deg) translateX(-50%); */
 }

@@ -9,7 +9,7 @@ export const HomeTop = () => {
         <div className="f">
             <div className="text">
                 <a>Bivouac Line</a>
-                <p> New visionary bivouac lines for the 2022 year.</p> 
+                <p id="para"> New visionary bivouac lines for the 2022 year.</p> 
                 <img src="https://boncoin-mayotte.com/wp-content/uploads/2020/04/16234-down-arrow.gif" className="gif"/>
             </div>
             <div className="fc">
