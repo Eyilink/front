@@ -6,7 +6,7 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 export const SignUp = () => {
-
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [register, setRegister] = useState(false);
@@ -23,7 +23,7 @@ export const SignUp = () => {
       axios(configuration)
       .then((result) => {
         setRegister(true);
-        useNavigate("/auth" , {replace: true});
+        navigate("/auth" , { replace: true });
       })
       .catch((error) => {
         error = new Error();
