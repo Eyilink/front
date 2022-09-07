@@ -23,7 +23,7 @@ export const SignUp = () => {
       axios(configuration)
       .then((result) => {
         setRegister(true);
-        navigate("/auth" , { replace: true });
+        navigate("/signin" , { replace: true });
       })
       .catch((error) => {
         error = new Error();
