@@ -4,6 +4,7 @@ import {FaMountain} from 'react-icons/fa';
 import Cookies from 'js-cookie';
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export const SignUp = () => {
 
     const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ export const SignUp = () => {
       axios(configuration)
       .then((result) => {
         setRegister(true);
-        
+        useNavigate("/auth" , {replace: true});
       })
       .catch((error) => {
         error = new Error();
